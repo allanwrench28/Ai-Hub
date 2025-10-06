@@ -6,13 +6,14 @@
 
 ## ⚡ Get Started in 30 Seconds
 
+> **First time?** See [INSTALL.md](INSTALL.md) for detailed installation guide with troubleshooting.
+
 ### Option 1: Automated Setup (Recommended)
 
 **On Mac/Linux:**
 ```bash
 git clone https://github.com/allanwrench28/Ai-Hub.git
 cd Ai-Hub
-chmod +x setup.sh
 ./setup.sh
 ```
 
@@ -187,6 +188,7 @@ MIT - Use it however you want!
 - **Web Dashboard**: http://localhost:3000
 - **Health Check**: http://localhost:3000/health
 - **Test Client**: `npm test`
-- **Examples**: [/examples](./examples)
+- **Installation Guide**: [INSTALL.md](INSTALL.md) ⭐ Start here!
 - **Quick Start**: [QUICKSTART.md](QUICKSTART.md)
 - **Detailed Usage**: [USAGE.md](USAGE.md)
+- **Examples**: [/examples](./examples)

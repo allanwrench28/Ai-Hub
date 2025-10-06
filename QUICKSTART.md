@@ -2,17 +2,22 @@
 
 Get your AI Hub running in 3 simple steps!
 
-## Step 1: Install & Start (2 minutes)
+## Step 1: Install & Start (1 minute)
 
+**Easy way (automated):**
 ```bash
-# Clone the repository
 git clone https://github.com/allanwrench28/Ai-Hub.git
 cd Ai-Hub
+./setup.sh          # Mac/Linux
+# or
+setup.bat           # Windows
+```
 
-# Install dependencies
+**Manual way:**
+```bash
+git clone https://github.com/allanwrench28/Ai-Hub.git
+cd Ai-Hub
 npm install
-
-# Start the server
 npm start
 ```
 
@@ -22,12 +27,23 @@ AI Hub server running on port 3000
 Visit http://localhost:3000 for API information
 ```
 
-## Step 2: Test It (1 minute)
+## Step 2: Test It (30 seconds)
+
+**Option A: Web Dashboard (Easiest!)**
+
+Open http://localhost:3000 in your browser!
+
+You'll see a beautiful dashboard where you can:
+- ✅ Log queries
+- ✅ View history  
+- ✅ Update context
+- ✅ See statistics
+
+**Option B: Command Line**
 
 Open a new terminal and run:
-
 ```bash
-node examples/test-client.js
+npm test
 ```
 
 You should see all tests pass with ✓ marks.
@@ -37,21 +53,28 @@ You should see all tests pass with ✓ marks.
 ### Scenario: Multi-Device AI Conversations
 
 **On your phone (ChatGPT):**
-```bash
-curl -X POST http://localhost:3000/queries \
-  -H "Content-Type: application/json" \
-  -d '{
-    "query": "I want to build a REST API",
-    "source": "chatgpt"
-  }'
-```
+
+Open http://YOUR_COMPUTER_IP:3000 in your phone's browser
+- Log a query: "I want to build a REST API"
+- Select source: ChatGPT
+- Click "Log Query"
 
 **On your PC (Copilot):**
-```bash
-# Get context from ChatGPT conversation
-curl http://localhost:3000/queries?limit=5
 
-# Now Copilot knows you're working on a REST API!
+Open http://localhost:3000 in your browser
+- Click "Refresh Queries"
+- See the query from your phone!
+- Now Copilot knows you're working on a REST API!
+
+**Advanced (Command Line):**
+```bash
+# From phone or any device
+curl -X POST http://YOUR_COMPUTER_IP:3000/queries \
+  -H "Content-Type: application/json" \
+  -d '{"query": "I want to build a REST API", "source": "chatgpt"}'
+
+# From PC
+curl http://localhost:3000/queries?limit=5
 ```
 
 ## What Just Happened?
