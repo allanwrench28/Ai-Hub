@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "setup": "npm install && echo '\n✓ Setup complete! Run: npm start' || echo '\n✗ Setup failed'",
+    "test": "node examples/test-client.js"
   },
   "keywords": ["ai", "hub", "api", "integration"],
   "author": "",
