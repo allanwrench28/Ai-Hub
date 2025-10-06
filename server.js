@@ -232,14 +232,16 @@ app.get('/export', (req, res) => {
     const queries = readQueries();
     const context = readContext();
     
+    const exportTimestamp = Date.now();
+    const exportDate = new Date(exportTimestamp).toISOString();
     const exportData = {
-      exportDate: new Date().toISOString(),
+      exportDate,
       queries,
       context
     };
     
     res.setHeader('Content-Type', 'application/json');
-    res.setHeader('Content-Disposition', `attachment; filename="ai-hub-export-${Date.now()}.json"`);
+    res.setHeader('Content-Disposition', `attachment; filename="ai-hub-export-${exportTimestamp}.json"`);
     res.json(exportData);
   } catch (error) {
     res.status(500).json({ error: 'Failed to export data' });
