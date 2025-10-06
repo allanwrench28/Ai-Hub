@@ -7,7 +7,9 @@
     "start": "node server.js",
     "dev": "node server.js",
     "setup": "npm install && echo '\n✓ Setup complete! Run: npm start' || echo '\n✗ Setup failed'",
-    "test": "node examples/test-client.js"
+    "test": "node examples/test-client.js",
+    "lint": "eslint server.js examples/*.js",
+    "lint:fix": "eslint server.js examples/*.js --fix"
   },
   "keywords": [
     "ai",
