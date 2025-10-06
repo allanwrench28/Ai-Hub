@@ -7,13 +7,23 @@
     "start": "node server.js",
     "dev": "node server.js",
     "setup": "npm install && echo '\n✓ Setup complete! Run: npm start' || echo '\n✗ Setup failed'",
-    "test": "node examples/test-client.js"
+    "test": "node examples/test-client.js",
+    "lint": "eslint server.js examples/*.js",
+    "lint:fix": "eslint server.js examples/*.js --fix"
   },
-  "keywords": ["ai", "hub", "api", "integration"],
+  "keywords": [
+    "ai",
+    "hub",
+    "api",
+    "integration"
+  ],
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.18.2",
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "eslint": "^9.37.0"
   }
 }
