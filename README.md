@@ -6,9 +6,21 @@
 
 ## ⚡ Get Started in 30 Seconds
 
-> **First time?** See [INSTALL.md](INSTALL.md) for detailed installation guide with troubleshooting.
+> **👋 Never used a terminal before?** Don't worry! See [INSTALL.md](INSTALL.md) for a complete beginner's guide with step-by-step instructions for everything!
 
-### Option 1: Automated Setup (Recommended)
+### What You Need First
+
+Before starting, make sure you have these installed:
+- **Git** (for downloading the code) - [How to install Git](INSTALL.md#1-git-for-downloadingcloning-the-code)
+- **Node.js** (to run AI Hub) - [How to install Node.js](INSTALL.md#2-nodejs-to-run-the-ai-hub-server)
+
+Not sure if you have them? [Check here](INSTALL.md#prerequisites)
+
+### Option 1: Automated Setup (Easiest!)
+
+**What to do:**
+1. Open Terminal (Mac/Linux) or Command Prompt (Windows) - [How do I open it?](INSTALL.md#-opening-your-terminalcommand-prompt)
+2. Copy and paste these commands one at a time, pressing Enter after each:
 
 **On Mac/Linux:**
 ```bash
@@ -24,7 +36,14 @@ cd Ai-Hub
 setup.bat
 ```
 
+3. **That's it!** Open your web browser and go to: `http://localhost:3000`
+
 ### Option 2: Manual Setup
+
+If the automated setup doesn't work, try this:
+
+1. Open Terminal (Mac/Linux) or Command Prompt (Windows)
+2. Copy and paste these commands one at a time, pressing Enter after each:
 
 ```bash
 git clone https://github.com/allanwrench28/Ai-Hub.git
@@ -33,7 +52,9 @@ npm install
 npm start
 ```
 
-**That's it!** 🎉 Now open http://localhost:3000 in your browser!
+3. Open your web browser and go to: `http://localhost:3000`
+
+**Need help?** Check [INSTALL.md](INSTALL.md) for detailed instructions with screenshots and troubleshooting!
 
 ---
 
