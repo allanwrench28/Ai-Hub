@@ -308,14 +308,221 @@
             font-size: 0.9em;
             margin-left: auto;
         }
+        
+        .privacy-notice {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .privacy-notice h3 {
+            color: #92400e;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+        
+        .privacy-notice p {
+            color: #78350f;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        
+        .btn-danger {
+            background: #ef4444;
+        }
+        
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+        
+        .btn-success {
+            background: #10b981;
+        }
+        
+        .btn-success:hover {
+            background: #059669;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        
+        .action-buttons button {
+            flex: 1;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .modal-content h2 {
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+        
+        .modal-content p {
+            color: #6b7280;
+            margin-bottom: 24px;
+        }
+        
+        .modal-buttons {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .modal-buttons button {
+            flex: 1;
+        }
+        
+        .search-box {
+            margin-bottom: 12px;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-size: 1.2em;
+            z-index: 100;
+        }
+        
+        body.dark-mode {
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+        }
+        
+        body.dark-mode .card,
+        body.dark-mode .quick-start,
+        body.dark-mode .modal-content,
+        body.dark-mode .theme-toggle {
+            background: #1f2937;
+            color: #e5e7eb;
+        }
+        
+        body.dark-mode .card h2,
+        body.dark-mode .quick-start h2,
+        body.dark-mode .modal-content h2,
+        body.dark-mode .form-group label {
+            color: #f3f4f6;
+        }
+        
+        body.dark-mode .card p,
+        body.dark-mode .step p,
+        body.dark-mode .modal-content p {
+            color: #9ca3af;
+        }
+        
+        body.dark-mode .form-group input,
+        body.dark-mode .form-group select,
+        body.dark-mode .form-group textarea,
+        body.dark-mode .search-box input {
+            background: #374151;
+            border-color: #4b5563;
+            color: #f3f4f6;
+        }
+        
+        body.dark-mode .query-list,
+        body.dark-mode .stat-item,
+        body.dark-mode .endpoint,
+        body.dark-mode .step {
+            background: #374151;
+        }
+        
+        body.dark-mode .query-item {
+            background: #1f2937;
+            color: #f3f4f6;
+        }
+        
+        body.dark-mode .query-text {
+            color: #e5e7eb;
+        }
+        
+        .delete-btn {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8em;
+            margin-left: 8px;
+        }
+        
+        .delete-btn:hover {
+            background: #dc2626;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats {
+                flex-direction: column;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
+    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode">🌓</button>
+    
     <div class="container">
         <div class="header">
             <h1>🤖 AI Hub</h1>
             <p>Your centralized hub for all AI services</p>
             <div class="status-badge" id="statusBadge">● Server Running</div>
+        </div>
+        
+        <div class="privacy-notice">
+            <h3>🔒 Privacy Notice</h3>
+            <p>All your data is stored locally on your device in the <code>./data/</code> directory. Your queries and context are never sent to external servers. You can export or delete your data at any time using the controls below.</p>
         </div>
 
         <div class="quick-start">
@@ -354,6 +561,15 @@
                 </div>
                 <button class="btn btn-secondary" onclick="refreshStats()">Refresh Stats</button>
             </div>
+            
+            <div class="card">
+                <h2>🛡️ Data Management</h2>
+                <p>Manage your stored data and privacy</p>
+                <div class="action-buttons">
+                    <button class="btn btn-success" onclick="exportData()">📥 Export Data</button>
+                    <button class="btn btn-danger" onclick="showClearDataModal()">🗑️ Clear All Data</button>
+                </div>
+            </div>
 
             <div class="card">
                 <h2>📝 Log a Query</h2>
@@ -368,6 +584,7 @@
                             <option value="chatgpt">ChatGPT</option>
                             <option value="copilot">GitHub Copilot</option>
                             <option value="grok">Grok</option>
+                            <option value="claude">Claude</option>
                             <option value="other">Other</option>
                         </select>
                     </div>
@@ -393,6 +610,7 @@
                             <option value="chatgpt">ChatGPT</option>
                             <option value="copilot">GitHub Copilot</option>
                             <option value="grok">Grok</option>
+                            <option value="claude">Claude</option>
                             <option value="other">Other</option>
                         </select>
                     </div>
@@ -404,6 +622,9 @@
 
         <div class="card">
             <h2>📜 Recent Queries</h2>
+            <div class="search-box">
+                <input type="text" id="searchQuery" placeholder="🔍 Search queries..." oninput="filterQueries()">
+            </div>
             <div class="query-list" id="queryList">
                 <p style="text-align: center; color: #9ca3af;">No queries yet. Log your first query above!</p>
             </div>
@@ -438,12 +659,40 @@
                     <span class="endpoint-path">/context</span>
                     <span class="endpoint-desc">Update context</span>
                 </div>
+                <div class="endpoint">
+                    <span class="endpoint-method">GET</span>
+                    <span class="endpoint-path">/export</span>
+                    <span class="endpoint-desc">Export all data</span>
+                </div>
+                <div class="endpoint">
+                    <span class="endpoint-method post">DELETE</span>
+                    <span class="endpoint-path">/queries</span>
+                    <span class="endpoint-desc">Clear all queries</span>
+                </div>
+                <div class="endpoint">
+                    <span class="endpoint-method post">DELETE</span>
+                    <span class="endpoint-path">/context</span>
+                    <span class="endpoint-desc">Clear all context</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Confirmation Modal for Clear Data -->
+    <div id="clearDataModal" class="modal">
+        <div class="modal-content">
+            <h2>⚠️ Clear All Data?</h2>
+            <p>This will permanently delete all your queries and context. This action cannot be undone. Consider exporting your data first.</p>
+            <div class="modal-buttons">
+                <button class="btn btn-secondary" onclick="hideClearDataModal()">Cancel</button>
+                <button class="btn btn-danger" onclick="clearAllData()">Clear All Data</button>
             </div>
         </div>
     </div>
 
     <script>
         const API_URL = window.location.origin;
+        let allQueries = [];
 
         // Check server health on load
         async function checkHealth() {
@@ -456,6 +705,115 @@
             } catch (error) {
                 document.getElementById('statusBadge').style.background = '#ef4444';
                 document.getElementById('statusBadge').textContent = '● Server Error';
+            }
+        }
+        
+        // Theme toggle
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDark);
+        }
+        
+        // Load theme preference
+        function loadTheme() {
+            const isDark = localStorage.getItem('darkMode') === 'true';
+            if (isDark) {
+                document.body.classList.add('dark-mode');
+            }
+        }
+        
+        // Export data
+        async function exportData() {
+            try {
+                const response = await fetch(`${API_URL}/export`);
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `ai-hub-export-${Date.now()}.json`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+            } catch (error) {
+                alert('Failed to export data. Please try again.');
+                console.error(error);
+            }
+        }
+        
+        // Show clear data modal
+        function showClearDataModal() {
+            document.getElementById('clearDataModal').classList.add('active');
+        }
+        
+        // Hide clear data modal
+        function hideClearDataModal() {
+            document.getElementById('clearDataModal').classList.remove('active');
+        }
+        
+        // Clear all data
+        async function clearAllData() {
+            try {
+                await Promise.all([
+                    fetch(`${API_URL}/queries`, { method: 'DELETE' }),
+                    fetch(`${API_URL}/context`, { method: 'DELETE' })
+                ]);
+                hideClearDataModal();
+                refreshStats();
+                alert('All data cleared successfully!');
+            } catch (error) {
+                alert('Failed to clear data. Please try again.');
+                console.error(error);
+            }
+        }
+        
+        // Delete individual query
+        async function deleteQuery(id) {
+            if (!confirm('Delete this query?')) return;
+            
+            try {
+                const response = await fetch(`${API_URL}/queries/${id}`, {
+                    method: 'DELETE'
+                });
+                
+                if (response.ok) {
+                    loadQueries();
+                    refreshStats();
+                } else {
+                    throw new Error('Failed to delete query');
+                }
+            } catch (error) {
+                alert('Failed to delete query. Please try again.');
+                console.error(error);
+            }
+        }
+        
+        // Filter queries
+        function filterQueries() {
+            const searchTerm = document.getElementById('searchQuery').value.toLowerCase();
+            const filteredQueries = allQueries.filter(q => 
+                q.query.toLowerCase().includes(searchTerm) ||
+                q.source.toLowerCase().includes(searchTerm)
+            );
+            displayQueries(filteredQueries);
+        }
+        
+        // Display queries
+        function displayQueries(queries) {
+            const queryList = document.getElementById('queryList');
+            
+            if (queries && queries.length > 0) {
+                queryList.innerHTML = queries.map(q => `
+                    <div class="query-item">
+                        <span class="query-source">${q.source}</span>
+                        <button class="delete-btn" onclick="deleteQuery('${q.id}')">✕</button>
+                        <div class="query-text">${q.query}</div>
+                        <div class="query-time">${new Date(q.timestamp).toLocaleString()}</div>
+                    </div>
+                `).join('');
+            } else {
+                queryList.innerHTML = '<p style="text-align: center; color: #9ca3af;">No queries found.</p>';
             }
         }
 
@@ -482,22 +840,12 @@
         // Load recent queries
         async function loadQueries() {
             try {
-                const response = await fetch(`${API_URL}/queries?limit=10`);
+                const response = await fetch(`${API_URL}/queries?limit=50`);
                 const data = await response.json();
                 
-                const queryList = document.getElementById('queryList');
-                
-                if (data.queries && data.queries.length > 0) {
-                    queryList.innerHTML = data.queries.map(q => `
-                        <div class="query-item">
-                            <span class="query-source">${q.source}</span>
-                            <div class="query-text">${q.query}</div>
-                            <div class="query-time">${new Date(q.timestamp).toLocaleString()}</div>
-                        </div>
-                    `).join('');
-                } else {
-                    queryList.innerHTML = '<p style="text-align: center; color: #9ca3af;">No queries yet. Log your first query above!</p>';
-                }
+                allQueries = data.queries || [];
+                document.getElementById('searchQuery').value = '';
+                displayQueries(allQueries);
             } catch (error) {
                 console.error('Failed to load queries:', error);
             }
@@ -579,6 +927,7 @@
         });
 
         // Initialize on page load
+        loadTheme();
         checkHealth();
         refreshStats();
     </script>

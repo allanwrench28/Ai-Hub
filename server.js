@@ -59,8 +59,12 @@ app.get('/api', (req, res) => {
       'GET /queries': 'Get all queries',
       'GET /queries/:id': 'Get a specific query',
       'POST /queries': 'Add a new query',
+      'DELETE /queries/:id': 'Delete a specific query',
+      'DELETE /queries': 'Clear all queries',
       'GET /context': 'Get shared context',
       'POST /context': 'Update shared context',
+      'DELETE /context': 'Clear all context',
+      'GET /export': 'Export all data',
       'GET /health': 'Health check'
     }
   });
@@ -182,6 +186,63 @@ app.post('/context', (req, res) => {
     });
   } catch (error) {
     res.status(500).json({ error: 'Failed to update context' });
+  }
+});
+
+// Delete a specific query
+app.delete('/queries/:id', (req, res) => {
+  try {
+    const queries = readQueries();
+    const filteredQueries = queries.filter(q => q.id !== req.params.id);
+    
+    if (filteredQueries.length === queries.length) {
+      return res.status(404).json({ error: 'Query not found' });
+    }
+    
+    writeQueries(filteredQueries);
+    res.json({ message: 'Query deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to delete query' });
+  }
+});
+
+// Clear all queries
+app.delete('/queries', (req, res) => {
+  try {
+    writeQueries([]);
+    res.json({ message: 'All queries cleared successfully' });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to clear queries' });
+  }
+});
+
+// Clear all context
+app.delete('/context', (req, res) => {
+  try {
+    writeContext({});
+    res.json({ message: 'All context cleared successfully' });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to clear context' });
+  }
+});
+
+// Export all data
+app.get('/export', (req, res) => {
+  try {
+    const queries = readQueries();
+    const context = readContext();
+    
+    const exportData = {
+      exportDate: new Date().toISOString(),
+      queries,
+      context
+    };
+    
+    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Content-Disposition', `attachment; filename="ai-hub-export-${Date.now()}.json"`);
+    res.json(exportData);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to export data' });
   }
 });
 
