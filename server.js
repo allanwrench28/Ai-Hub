@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use(express.static('public'));
 
 // Data storage directory
 const DATA_DIR = path.join(__dirname, 'data');
@@ -49,8 +50,8 @@ function writeContext(context) {
 
 // Routes
 
-// Home route
-app.get('/', (req, res) => {
+// API info route
+app.get('/api', (req, res) => {
   res.json({
     message: 'AI Hub - Your central hub for AI service integration',
     version: '1.0.0',
