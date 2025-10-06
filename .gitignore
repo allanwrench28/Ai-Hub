@@ -1,5 +1,9 @@
 node_modules/
 *.log
 .env
+# User data files - keep private
 data/*.json
 !data/.gitkeep
+# Temporary files
+tmp/
+*.tmp

@@ -72,9 +72,14 @@ AI Hub is a **simple server** that lets all your AI services (ChatGPT, GitHub Co
 - 🌐 **Web Dashboard** - Easy point-and-click interface (no coding needed!)
 - 🔄 **Query Sharing** - All AI services can log and access queries
 - 📝 **Shared Context** - Persistent context across all AI services
-- 🔍 **History** - Access complete conversation history
+- 🔍 **Smart Search** - Search and filter your query history in real-time
 - 🚀 **Simple API** - Easy integration with any AI service
 - 💾 **Local Storage** - All data stays on your computer
+- 🌙 **Dark Mode** - Toggle between light and dark themes
+- 📥 **Data Export** - Backup all your data as JSON
+- 🗑️ **Data Management** - Clear all data or delete individual queries
+- 🔒 **Privacy First** - Your data never leaves your device
+- 📱 **Responsive Design** - Works on desktop, tablet, and mobile
 
 ---
 
@@ -85,10 +90,14 @@ AI Hub is a **simple server** that lets all your AI services (ChatGPT, GitHub Co
 1. Start the server: `npm start`
 2. Open http://localhost:3000 in your browser
 3. Use the dashboard to:
-   - Log queries
-   - View history
-   - Update context
+   - Log queries from different AI services
+   - View and search query history
+   - Update shared context
    - See statistics
+   - **Export your data** for backup
+   - **Clear data** when needed
+   - **Toggle dark mode** for comfortable viewing
+   - Delete individual queries
 
 **No coding required!** Everything can be done from your browser.
 
@@ -140,8 +149,12 @@ All endpoints are available at `http://localhost:3000`
 | GET | `/health` | Server health check |
 | GET | `/queries` | Get all queries |
 | POST | `/queries` | Log a new query |
+| DELETE | `/queries/:id` | Delete a specific query |
+| DELETE | `/queries` | Clear all queries |
 | GET | `/context` | Get shared context |
 | POST | `/context` | Update context |
+| DELETE | `/context` | Clear all context |
+| GET | `/export` | Export all data as JSON |
 
 **Full API documentation available in the web dashboard!**
 
@@ -178,8 +191,15 @@ PORT=8080 npm start
 
 ---
 
-## 🔒 Security Note
+## 🔒 Privacy & Security
 
+**Your data stays private!** AI Hub stores all data locally on your device:
+- All queries and context stored in `./data/` directory on your computer
+- **No external servers** - your data never leaves your device
+- Full control - export or delete your data anytime
+- Data files excluded from git to prevent accidental commits
+
+### For Personal Use
 AI Hub is designed for **personal use**. If you want to use it in production:
 - Add authentication
 - Use a real database (PostgreSQL, MongoDB)
